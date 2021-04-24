@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+  
+</head>
+
+<body>
+   <form>
+     <input type="text" name="name" />
+     <input type="text" name="age" />
+     <input type="text" name="gender" />
+     <input type="text" name="address" />
+     <input type="text" name="place" />
+     <button disabled>sumit</button>     <!-- enable button on filling all input fields-->
+   </form>
+   
+   <script>
+      //attach on blur event dynamically
+      const inputEles = document.getElementsByTagName('input');  //no need to write to every input separately can do it using for loop inputEles is array 
+      const length = inputEles.length;// 5 inputs 
+      for(var i=0; i<length; i++){
+              inputEles[i].addEventListener("blur", validate);
+          }
+    //   element.removeEventListener('event', handler);
+      function validate(){           
+          let flag = true;
+         for(var i=0; i<length; i++){
+              if(inputEles[i].value === ""){        
+              //    if(event.target.value===''){
+                  flag=false;
+                  console.log(flag);
+              }
+              document.getElementsByTagName('button')[0].disabled=!flag;
+         }
+      }        
+   </script>
+</body>
+
+</html>
