@@ -1,0 +1,32 @@
+<!-- //DOM
+//getElementById : 1 object
+//getElementsByClassName : array of objects --- array of objects returned
+//getElemeentsByTagName : array of objects --- 
+//querySelector : 1 object: css selector: #id, .class, p, ul>li  return one single object
+//querySelectorAll : array of objects -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+  <script src="object.js"></script>
+</head>
+<body>
+  <p id="p1"> this is default content</p>
+  <button onclick="test()"> change text</button>
+  <script>
+      function test(){
+          document.getElementById("p1").innerText="sample updated content";
+          alert("text changed");  //synchronous
+                                  // ui update is asynchronous.
+                                  // so after alert(synchronous) only asynchronous happens. UI updation happens after alert gets displayed.
+
+
+                                  //synchronous functions first
+                                  // then asynchronous 
+      }
+  </script>
+
+
+</body>
+</html>
