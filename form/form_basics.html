@@ -1,0 +1,55 @@
+<!--form
+onclick
+onreset
+onblur
+onfocus
+onchange
+onselect
+-->
+
+<!-- every tag is associated with event
+    onload for body 
+     
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>  
+ <form onsubmit="evTest()" onreset="evTest()">
+    <input type="text" id="txt1" onblur="testEvent(this)" />  <!-- leave the field .you are in box, when you leave the box it gets triggered-->
+    <input type="text" id="txt2" onfocus="testEvent()" /> <!-- when you enter the field-->
+    <input type="text" id="txt3" onblur="testEv()" />
+    <input type="text" id="txt4" onblur="testEv()" />
+    <input type="text" id="txt4" onfocus="testEv()" />
+    <input type="text" onchange="evTest()" onselect="evTest()"/>  <!-- on changing input  .....on selecting by using mouse-->
+    <button type="submit">submit</button> <!-- no action it refreshes in same page will not be submitted-->
+    <button type="reset">reset</button>
+</from>
+  <script>
+      function testEvent(ctrl){
+          console.log("event fired",ctrl, event);         //for finding who triggered the event 1. using this (document.getElementById('txt1')) also does the same
+      }                                                    //                                   2. using event
+
+      function testEv(){
+          if(event.target.value === ""){  //if you haven't entered anything in input field
+              event.target.style.borderColor = "red"; // in js for css properties camel casing
+          }
+          else{
+              event.target.style.borderColor = "green";
+          }
+      }
+
+     function evTest(){
+         console.log(event);
+         event.preventDefault();//cancel the default event behaviour ie refreshing, even reset will not work
+     }
+
+
+  </script>
+
+
+</body>
+</html>
