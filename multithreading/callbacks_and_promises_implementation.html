@@ -1,4 +1,5 @@
-<!-- promises
+<!--callback
+   promises 2 ways of implementing
     1. then and catch
     2. async and await
 -->
@@ -12,6 +13,7 @@
 
 <body>
     <script>
+        //callback
         function asyncWithCallbacks(callback1, callback2) {  //whole function function(data){console.log('1',data)} sits in callback1
             setTimeout(function () {
                 callback1("callback 1"); //"callback 1" is the argument 
@@ -27,6 +29,7 @@
             function (data) { console.log('2', data) } //calling
         );
 
+        //promises
         function asyncWithPromise() {
             return new Promise(function (resolve, reject) {    //either this or that who executed first will be printed, other not executed
                 setTimeout(function () {
