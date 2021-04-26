@@ -1,0 +1,60 @@
+<!--
+    cookies: amount of data stored in small, is in kb
+              can easily be tampered
+    locationStorage: data is available across all the sessions 4mb storage space is used
+                     better in terms of security..uses ur domain
+    sessionStorage: available only for current session ...afer you close browser data is gone
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+  <form>
+    <input type="text" name="key" id="key" placeholder="key"/> <!-- key: value both should be string can use JSON.stringify(val.value) to convert tostring
+                                                                  use stringfy and JSON.parse as min as possible it is time consuming just like getElementById-->
+    <input type="text" name="value" id="value" placeholder="value"/>
+    <button type="button" onclick="storeLocal()">Local storage</button>
+    <button type="button" onclick="storeSession()">Session storage</button> <!-- once you close the browser data is gone
+                                                                                  browser session is application user session if application has not defined its own user session session data is gone when you close browser(not just application)
+                                                                                  if app has login then it has defined user session when you logout session data is gone-->
+    <button type="button" onclick="clearLocal()">Clear Local storage</button>
+    <button type="button" onclick="storeLocal()">Local storage</button>
+    <button type="button" onclick="clarSession()">Clear session storage </button>   
+    <button type="button" onclick="getData()">Get local storage data </button>
+    </button>
+</form>
+<script>
+  const key=document.getElementById("key");
+  const val=document.getElementById("value");
+  function storeLocal(){
+      localStorage.setItem(key.value,JSON.stringify(val.value));  // JSON.stringify() - object to string
+                                                                  //JSON.parse() - string to object
+     // const data = localStorage.getItem('key'); 
+  }
+
+  function getData(){
+      const data = localStorage.getItem(key.value);
+      console.log("local data"+data);
+  }
+
+  function storeSession(){
+      sessionStorage.setItem(key.value,JSON.stringify(val.value));
+  }
+
+  function clearLocal(){
+      localStorage.clear(); //removes all //in browser in application you have local storage "Clear All" icon
+      //localStorage.removeItem('key'); //selected key to be removed
+  }
+
+
+</script>
+
+ 
+
+</body>
+</html>
+
