@@ -1,0 +1,79 @@
+<!-- promises
+    1. then and catch
+    2. async and await
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+    <script>
+        function asyncWithCallbacks(callback1, callback2) {  //whole function function(data){console.log('1',data)} sits in callback1
+            setTimeout(function () {
+                callback1("callback 1"); //"callback 1" is the argument 
+            }, 2000);
+
+            setTimeout(function () {
+                callback2("callback 2");
+            }, 4000);
+        }  //definition
+
+        asyncWithCallbacks(
+            function (data) { console.log('1', data) }, //here data takes data="callback 1"   // in callback both are called one after other printed in the order of execution
+            function (data) { console.log('2', data) } //calling
+        );
+
+        function asyncWithPromise() {
+            return new Promise(function (resolve, reject) {    //either this or that who executed first will be printed, other not executed
+                setTimeout(function () {
+                    resolve("promise resolve");
+                }, 2000);
+
+                setTimeout(function () {
+                    reject("promise rejected");
+                }, 1000);   //test reject by giving 1000
+            })                   //return promise object
+        }
+
+        // 1. then and catch
+        asyncWithPromise().then(function (data) {
+            console.log(data);       //if resolved comes to this function
+        })
+            .catch(function (err) {    //if rejected comes here
+                console.log(err);
+            });
+
+
+        //2. async and await
+        function testAsync() {
+            const data = asyncWithPromise();// pending    fulfilled      rejected    can't see ..so wait till asyncWithPrmise is over
+            //can await only a function that returns promise
+            console.log("ASYNC", data);
+        }
+        testAsync();
+
+        async function testAsync1() {
+            const data = await asyncWithPromise();   //can handle only successful scenario you get red "Uncaught (in promise) promise rejected"
+            console.log("ASYNC_wait", data);              //so use try catch
+        }
+        testAsync1();
+
+        async function testAsync2() {
+            try {
+                const data = await asyncWithPromise();
+            }
+            catch (e) {
+                console.log("ASYNC_WITH_TRY_CATCH ", data);
+            }
+        }
+        testAsync2();
+
+    </script>
+
+</body>
+
+</html>
