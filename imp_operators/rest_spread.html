@@ -1,7 +1,7 @@
-
 <!-- spread -
     in 2 scenarios
 1.  when you dont know no of arguments...it takes any no of arguments
+2. to create immutable operators       //only arrays and objects are mutable
 -->
 
 <!DOCTYPE html>
@@ -30,9 +30,10 @@
          {...product}
         ]; //new ref object
     console.log(product);
-    console.log(cart);
+    console.log(cart);//no quantity
+    console.log(JSON.stringify(cart)); //show data in string format rather than object ...browser doesn't load untill you press arrow
     cart[0].qty = 2;
-    console.log(cart);
+    console.log(cart); //have quantity
     console.log(product);
 
 </script>
