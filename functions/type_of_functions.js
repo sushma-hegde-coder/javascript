@@ -71,3 +71,5 @@ const human={
 //use arrow function only for these 2 scenarios
 //async function : () =>
 //events : () =>
+//arrow function rule
+//for single line code, no code block is required, single line statement will by default act as a return statement
