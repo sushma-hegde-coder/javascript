@@ -1,9 +1,7 @@
+<!-- map    --takes argument as callback func
+     filter  --returns boolean 
+     arrow function --noneed to write return if only one line is there...instead of multiline code, it becomes single line-->
 
-<!-- spread -
-    in 2 scenarios
-1.  when you dont know no of arguments...it takes any no of arguments
-2. to create immutable operators       //only arrays and objects are mutable
--->
 
 <!DOCTYPE html>
 <html>
@@ -11,31 +9,39 @@
 <title>Page Title</title>
 </head>
 <body>
+
 <script>
-    //rest arguments: ... (parameter) a:any
-    function sumOfNos(a,b,c, ...d){    //if you use (a,b,c) it will take only 3 arguments rest if included in calling func, it is ignored
-        console.log(a,b,c,d);
+    const nos=[1,2,3,4,5,6];
+    const square = nos.map(function (value,index,arr){
+    //return updated value
+    return value*value;
+    });
+
+    //for conditioning can't use map alone
+    const square1 = nos.map(function (value,index,arr){
+    if( value % 2 === 0){
+        return value*value;
     }
+    });
 
-    sumOfNos(1,2,3,);
-    sumOfNos(1,2,3,4,5,6);
+    //filter function
+    //returns boolean
+    const evenNos=square.filter(function(value,index,arr){
+        //return boolean
+        return value!== undefined;
+    });
+   console.log(evenNos, square);
+   //console.log(nos,square1);
 
-    //2. changing the reference
-    const product = {id: 1000, name:"product", price:12000};
-    // const cart = [product]      here cart storing the same address product is storing //both will be refering to same object
-    //changing something in cart reflects product also
-    //I don't need reference, I need only data, copy the 
-    //new object---new memory reference
-    //2 different objects
-    const cart = [
-         {...product}
-        ]; //new ref object
-    console.log(product);
-    console.log(cart);//no quantity
-    console.log(JSON.stringify(cart)); //show data in string format rather than object ...browser doesn't load untill you press arrow
-    cart[0].qty = 2;
-    console.log(cart); //have quantity
-    console.log(product);
+//arrow function rule
+//for single line code, no code block is required, single line statement will by default act as a return statement
+const evenNos1= square.filter((value,index,arr) => value !== undefined);
+console.log("evennos1"+evenNos1);
+
+ // get even nos using filter and map combinedly
+ const even = nos.filter((val) => val %2 === 0).map((val)=> val* val);
+    console.log("Even"+even);
+
 
 </script>
 
