@@ -1,0 +1,104 @@
+<!--
+
+mouse oriented events
+     onclick
+    ondblclick
+    onmousemove
+    onmouseout
+    onmouseover
+    onmouseup
+    onmousedown
+
+keyboard events
+    onkeyup
+    onkeydown
+    onkeypress -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+</head>
+<body>   
+    <!--  mouse events-->
+        <button type="submit" onclick="onClickfun()">click</button>
+        <button type="submit" ondblclick="onDoubleClickfun()">double click</button>
+        <button type="submit" onmousemove="onMouseMovefun()">mouse move</button>
+         <!-- multiple times you enter and go out 
+        for analytics
+         what user is doing-->
+        <button type="submit" onmouseout="onMouseOutfun()">mouse out </button> <!-- moment mouse enter .enter edge of button only once-->
+        <button type="submit" onmouseover="onMouseOverfun()">mouse over</button><!-- once you leave one time-->
+        <button type="submit" onmouseup="onMouseUpfun()">mouse up</button><!--moment left click or right click release-->
+        <button type="submit" onmousedown="onMouseDownfun()">mouse down</button><!-- similar to click click means mouse down-->
+    
+    <!--keyboard events-->
+    keyup test<input type="text" onkeyup="onKeyUpfun()" ><!-- press key and release ...data has been entered
+        enter security code.. after pressing convert to upper case onkeyup="changeCase()"{ event.target.value=event.target.value.toUpperCase();}-->
+
+    <!-- credit card can't give type="number"
+        keycode, charCode in events -->
+    keyup card validation<input type="text" onkeyup="cardValidator()" ><!-- 2 reasons- 1. if given no ...
+                                                                                       2. developer can change in developer tool in chrome use validation -->
+    keydown test<input type="text" onkeydown="onKeyDownfun()"><!-- data is going to be entered-->
+    keydown card validation<input type="text" onkeydown="cardValidator()" ><!--similar to key press will triggger for everyting escape, backspace-->
+    keypress test<input type="text" onkeypress="onKeyPressfun()"><!-- for pressinn key and enter works, will not work for backspace,escape-->
+
+    <script>
+        function onClickfun(){
+             console.log(event);
+            console.log("mouse is clicked")
+        }
+
+        function onDoubleClickfun(){
+            console.log("mouse is doble clicked")
+        }
+        function onMouseMovefun(){
+            console.log("mouse moved")
+        }
+        function onMouseOutfun(){
+            console.log("mouse is out")
+        }
+
+        function onMouseOverfun(){
+            console.log("mouse over")
+        }
+
+        function onMouseUpfun(){
+            console.log("mouse up")
+        }
+        function onMouseDownfun(){
+            console.log("mouse down")
+        }
+
+
+        function onKeyUpfun(){
+           console.log("event fired key up,",event)
+            console.log("key up")
+        }
+
+        function cardValidator(){ //take only numbers, if alphabet is written prevent it from taking into your input
+            if(event.keyCode<48||event.keyCode>57){    //ascii code
+                //should not be taken         
+                console.log(event.key);            
+                event.preventDefault(); //cancel the keyboad behaviour ie it will not take the character
+            }
+            else{
+                console.log('number')
+            }
+        }
+
+        function onKeyDownfun(){           
+            console.log("key down")
+        }
+
+        function onKeyPressfun(){            
+            console.log("key is pressed")
+        }      
+        
+
+    </script>
+
+</body>
+</html>
