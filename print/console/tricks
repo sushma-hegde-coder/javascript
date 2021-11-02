@@ -1,0 +1,5 @@
+console.log({a}) => a=10
+console.table(person) => array of objects in the form of table
+
+select an element dev tool in console do $0-> you will get selected element
+$_ => return value of last executed statement
