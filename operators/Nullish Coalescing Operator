@@ -1,0 +1,7 @@
+function getAmount(){
+  return 0
+}
+
+const defaultAmount=100
+let amount=getAmount() ?? defaultAmount  --> return from getAmount func if it is not returning undefined or null(print 0 also), 
+console.log({amount})                                                  otherwise print defaultAmount... ternary operator does not print 0 if it is returned from func
