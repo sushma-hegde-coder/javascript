@@ -1,0 +1,3 @@
+setTimeout returns unique id (like 1,2)
+you can clear it using clearTimeout
+
