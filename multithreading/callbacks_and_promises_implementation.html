@@ -1,7 +1,8 @@
-<!--callback
-   promises 2 ways of implementing
-    1. then and catch
-    2. async and await
+// https://drive.google.com/drive/folders/1itJhIct7TD8QbtJXhe7vrTuRxjmIZfYD 1:21:20
+<!--1. callback
+    2. promises 2 ways of implementing  https://drive.google.com/drive/folders/1itJhIct7TD8QbtJXhe7vrTuRxjmIZfYD  2:11
+      1. then and catch
+      2. async and await
 -->
 
 <!DOCTYPE html>
@@ -13,7 +14,8 @@
 
 <body>
     <script>
-        //callback
+        //callback 1:21:25
+       //you don't call the function somebody else calls it for you 
         function asyncWithCallbacks(callback1, callback2) {  //whole function function(data){console.log('1',data)} sits in callback1
             setTimeout(function () {
                 callback1("callback 1"); //"callback 1" is the argument 
@@ -29,9 +31,9 @@
             function (data) { console.log('2', data) } //calling
         );
 
-        //promises
+        //promises  https://drive.google.com/drive/folders/1itJhIct7TD8QbtJXhe7vrTuRxjmIZfYD  2:11
         function asyncWithPromise() {
-            return new Promise(function (resolve, reject) {    //either this or that who executed first will be printed, other not executed
+            return new Promise(function (resolve, reject) {    //either this or that who executed first will be printed, other not executed   resolve, reject both are response only
                 setTimeout(function () {
                     resolve("promise resolve");
                 }, 2000);
@@ -42,7 +44,7 @@
             })                   //return promise object
         }
 
-        // 1. then and catch
+        // 1. then and catch       most of the time you will be only using promise, you won't be writing new Promise(function (resol...))code
         asyncWithPromise().then(function (data) {
             console.log(data);       //if resolved comes to this function
         })
@@ -59,6 +61,7 @@
         }
         testAsync();
 
+       // you can async await only promise
         async function testAsync1() {
             const data = await asyncWithPromise();   //can handle only successful scenario you get red "Uncaught (in promise) promise rejected"
             console.log("ASYNC_wait", data);              //so use try catch
