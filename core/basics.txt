@@ -1,0 +1,7 @@
+Javacript is splits into 3 parts-
+Core : language features such as var, let, const, for loop, arrays, objects
+DOM : dynamic html : document.getElementById()  -- document object is single tree, javascript runtime is fetching the leaf --searches entire tree to find leaf
+BOM : browser functionalitites : browser object model 
+                               : history--> browser history
+                               : location --> url
+                               : navigator --> browser information --version of browser
